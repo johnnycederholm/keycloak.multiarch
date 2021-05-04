@@ -21,9 +21,6 @@ jobs:
           git am < ../../image.patch
         workingDirectory: keycloak-containers/server
         displayName: Apply base image patch
-      - script: |
-          git log
-        workingDirectory: keycloak-containers
       - task: Docker@2
         displayName: Docker Hub login
         inputs:
