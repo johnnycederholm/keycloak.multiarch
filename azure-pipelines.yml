@@ -1,7 +1,7 @@
 trigger: none
 
-pool: 
-  vmImage: 'ubuntu-20.04'
+pool:
+  name: Default 
 
 variables:
   DOCKER_CLI_EXPERIMENTAL: enabled
