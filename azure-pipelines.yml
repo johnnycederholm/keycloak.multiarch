@@ -13,8 +13,11 @@ jobs:
       - script: |
           git config --global user.email "johnny.k.hansson@gmail.com"
           git config --global user.name "Johnny Cederholm"
+        displayName: Setup name and email for git
       - script: |
           git am < ../../image.patch
         workingDirectory: keycloak-containers/server
+        displayName: Apply base image patch
       - script: |
           git log
+        workingDirectory: keycloak-containers
