@@ -3,6 +3,9 @@ trigger: none
 pool: 
   vmImage: 'ubuntu-20.04'
 
+variables:
+  DOCKER_CLI_EXPERIMENTAL: enabled
+
 jobs:
   - job:
     displayName: Create Docker image
@@ -21,3 +24,17 @@ jobs:
       - script: |
           git log
         workingDirectory: keycloak-containers
+      - task: Docker@2
+        displayName: Docker Hub login
+        inputs:
+          containerRegistry: 'Docker Hub'
+          command: 'login'
+      - script: |
+          docker buildx create --use
+          docker buildx build --platform linux/arm/v7 \
+            -t johnnyhansson/keycloak:$(build.buildNumber) \
+            -t johnnyhansson/keycloak:latest \
+          --push \
+          .
+        displayName: Build and push multiarch Docker image
+        workingDirectory: keycloak-containers/server
