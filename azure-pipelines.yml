@@ -11,6 +11,9 @@ jobs:
           git clone https://github.com/keycloak/keycloak-containers.git  
         displayName: Checkout Keycloak Containers repository
       - script: |
+          git config --global user.email "johnny.k.hansson@gmail.com"
+          git config --global user.name "Johnny Cederholm"
+      - script: |
           git am < ../../image.patch
         workingDirectory: keycloak-containers/server
       - script: |
