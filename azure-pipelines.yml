@@ -30,5 +30,10 @@ jobs:
           docker run --privileged --rm tonistiigi/binfmt --install all
           docker buildx create --name builder --use
           docker buildx inspect builder --bootstrap
+          docker buildx build --platform linux/arm/v7 \
+            -t johnnyhansson/keycloak:$(build.buildNumber) \
+            -t johnnyhansson/keycloak:latest \
+          --push \
+          .
         displayName: Build and push multiarch Docker image
         workingDirectory: keycloak-containers/server
