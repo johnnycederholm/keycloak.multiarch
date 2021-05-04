@@ -1,0 +1,22 @@
+From adce973c49e732e23b3499f22c76c6e47ae8d533 Mon Sep 17 00:00:00 2001
+From: Johnny Cederholm <johnny.cederholm@tretton37.com>
+Date: Tue, 4 May 2021 21:59:45 +0200
+Subject: [PATCH] Change base image to Fedora
+
+---
+ server/Dockerfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/server/Dockerfile b/server/Dockerfile
+index d28336f..aba8e49 100644
+--- a/server/Dockerfile
++++ b/server/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM registry.access.redhat.com/ubi8-minimal
++FROM registry.fedoraproject.org/fedora-minimal:34
+ 
+ ENV KEYCLOAK_VERSION 12.0.1
+ ENV JDBC_POSTGRES_VERSION 42.2.5
+-- 
+2.31.1.windows.1
+

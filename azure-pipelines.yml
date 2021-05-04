@@ -1,0 +1,17 @@
+trigger: none
+
+pool: 
+  vmImage: 'ubuntu-20.04'
+
+jobs:
+  - job:
+    displayName: Create Docker image
+    steps:
+      - script: |
+          git clone https://github.com/keycloak/keycloak-containers.git  
+        displayName: Checkout Keycloak Containers repository
+      - script: |
+          git am < ../../image.patch
+        workingDirectory: keycloak-containers/server
+      - script: |
+          git log
