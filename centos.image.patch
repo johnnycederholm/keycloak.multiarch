@@ -1,7 +1,7 @@
 From 677064d72ca25ed6daeb709b4030fe5e5ec25ba9 Mon Sep 17 00:00:00 2001
 From: Johnny Cederholm <johnny.cederholm@tretton37.com>
 Date: Wed, 5 May 2021 22:37:23 +0200
-Subject: [PATCH] Switch base image to Centos 8
+Subject: [PATCH] Switch base image to Centos 7
 
 ---
  server/Dockerfile | 4 ++--
@@ -13,7 +13,7 @@ index d28336f..014432b 100644
 +++ b/server/Dockerfile
 @@ -1,4 +1,4 @@
 -FROM registry.access.redhat.com/ubi8-minimal
-+FROM centos:8
++FROM centos:7
  
  ENV KEYCLOAK_VERSION 12.0.1
  ENV JDBC_POSTGRES_VERSION 42.2.5
