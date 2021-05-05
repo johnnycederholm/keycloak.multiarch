@@ -18,7 +18,7 @@ jobs:
           git config --global user.name "Johnny Cederholm"
         displayName: Setup name and email for git
       - script: |
-          git am < ../../fedora-minimal.image.patch
+          git apply < ../../fedora-minimal.image.patch
         workingDirectory: keycloak-containers/server
         displayName: Apply base image patch
       - task: Docker@2
