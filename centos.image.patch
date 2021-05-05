@@ -1,0 +1,31 @@
+From 677064d72ca25ed6daeb709b4030fe5e5ec25ba9 Mon Sep 17 00:00:00 2001
+From: Johnny Cederholm <johnny.cederholm@tretton37.com>
+Date: Wed, 5 May 2021 22:37:23 +0200
+Subject: [PATCH] Switch base image to Centos 8
+
+---
+ server/Dockerfile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/server/Dockerfile b/server/Dockerfile
+index d28336f..014432b 100644
+--- a/server/Dockerfile
++++ b/server/Dockerfile
+@@ -1,4 +1,4 @@
+-FROM registry.access.redhat.com/ubi8-minimal
++FROM centos:8
+ 
+ ENV KEYCLOAK_VERSION 12.0.1
+ ENV JDBC_POSTGRES_VERSION 42.2.5
+@@ -17,7 +17,7 @@ ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLO
+ 
+ USER root
+ 
+-RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname java-11-openjdk-headless openssl tar which && microdnf clean all
++RUN yum update -y && yum -y install glibc-langpack-en gzip hostname java-11-openjdk-headless openssl tar which && yum clean all
+ 
+ ADD tools /opt/jboss/tools
+ RUN /opt/jboss/tools/build-keycloak.sh
+-- 
+2.31.1.windows.1
+
